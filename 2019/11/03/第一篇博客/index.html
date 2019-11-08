@@ -70,6 +70,8 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;gckharden.github.io&#x2F;images&#x2F;%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%932.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;gckharden.github.io&#x2F;images&#x2F;ssh%E9%85%8D%E7%BD%AE1.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;gckharden.github.io&#x2F;images&#x2F;ssh%E9%85%8D%E7%BD%AE2.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gckharden.github.io&#x2F;images&#x2F;%E5%8F%91%E5%B8%83%E8%87%B3github1.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gckharden.github.io&#x2F;images&#x2F;%E5%8F%91%E5%B8%83%E8%87%B3github2.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;gckharden.github.io&#x2F;images&#x2F;next%E4%B8%8B%E8%BD%BD.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;gckharden.github.io&#x2F;images&#x2F;theme.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;gckharden.github.io&#x2F;images&#x2F;theme%E6%94%B9%E4%B8%BAnext.png">
@@ -83,7 +85,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;gckharden.github.io&#x2F;images&#x2F;%E5%A4%B4%E5%83%8F%E6%97%8B%E8%BD%AC1.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;gckharden.github.io&#x2F;images&#x2F;%E5%A4%B4%E5%83%8F%E6%97%8B%E8%BD%AC2.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;gckharden.github.io&#x2F;images&#x2F;%E6%96%B0%E5%BB%BA%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0.png">
-<meta property="og:updated_time" content="2019-11-07T15:10:53.527Z">
+<meta property="og:updated_time" content="2019-11-07T15:20:59.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;gckharden.github.io&#x2F;images&#x2F;node%E4%B8%8B%E8%BD%BD.png">
 
@@ -207,9 +209,32 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
   
 </nav>
 
@@ -340,8 +365,10 @@
 </li>
 <li><h3 id="7-安装sublime-Text"><a href="#7-安装sublime-Text" class="headerlink" title="7. 安装sublime Text"></a>7. 安装sublime Text</h3><p>Sublime Text 是一个代码编辑器，可以用来编辑你的博客。进入官网进行下载安装就好了。</p>
 </li>
-<li><h3 id="8-hexo-发布至github"><a href="#8-hexo-发布至github" class="headerlink" title="8. hexo 发布至github"></a>8. hexo 发布至github</h3><p>终端实现命令</p>
-<p><font color=red>hexo g</font><br><font color=red>hexo d </font>(上传博客到github)</p>
+<li><h3 id="8-hexo-发布至github"><a href="#8-hexo-发布至github" class="headerlink" title="8. hexo 发布至github"></a>8. hexo 发布至github</h3><ol>
+<li>更改站点配置文件<br><img src="/images/%E5%8F%91%E5%B8%83%E8%87%B3github1.png" alt="avatar"><br><img src="/images/%E5%8F%91%E5%B8%83%E8%87%B3github2.png" alt="avatar"></li>
+<li>终端实现命令<br><font color=red>hexo npm install –save hexo-deployer-git</font> 安装依赖<br><font color=red>hexo g</font><br><font color=red>hexo d </font>(上传博客到github)</li>
+</ol>
 <p><font color=red>记得上传之前一定要先保存你的编辑，一般直接关闭Sublime Tex†，勾选save就可以保存编辑</font></p>
 </li>
 <li><h3 id="9-安装next主题"><a href="#9-安装next主题" class="headerlink" title="9. 安装next主题"></a>9. 安装next主题</h3><ol>
@@ -490,6 +517,17 @@
 
         <div class="links-of-author motion-element">
           
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gckharden" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
         </div>
 
         
@@ -626,6 +664,135 @@
 
   
   
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
   
 
   
